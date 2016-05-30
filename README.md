@@ -11,46 +11,55 @@ It is cool。
 * 对SharedPreferences获取数据提供了如下类似方法：
 
 ```java
-	public static String getString(Application application, String name, String key) {
-		if (checkApplicationAndStrings(application, name, key)) {
-			return getSP(application, name).getString(key, "").trim();
-		}
-		return "";
-	}
+    public static String getString(Application application, String name, String key) {
+        if (checkApplicationAndStrings(application, name, key)) {
+            return getSP(application, name).getString(key, "").trim();
+        }
+        return "";
+    }
 
-	public static String getString(Application application, String key) {
-		return getString(application, spFileName, key);
-	}
+    public static String getString(Application application, String key) {
+        return getString(application, spFileName, key);
+    }
 
-	public static String getString(String name, String key) {
-		return getString(application, name, key);
-	}
+    public static String getString(Activity activity, String key) {
+        return getString(activity.getApplication(), spFileName, key);
+    }
 
-	public static String getString(String key) {
-		return getString(application, spFileName, key);
-	}
+
+    public static String getString(String name, String key) {
+        return getString(application, name, key);
+    }
+
+    public static String getString(String key) {
+        return getString(application, spFileName, key);
+    }
 ```
 
 * 对SharedPreferences设置数据提供了如下类似方法：
 
 ```java
-	public static void pushString(Application application, String name, String key, String value) {
-		if (checkApplicationAndStrings(application, name, key, value)) {
-			getSP(application, name).edit().putString(key, value.trim()).commit();
-		}
-	}
+    public static void pushString(Application application, String name, String key, String value) {
+        if (checkApplicationAndStrings(application, name, key, value)) {
+            getSP(application, name).edit().putString(key, value.trim()).commit();
+        }
+    }
 
-	public static void pushString(Application application, String key, String value) {
-		pushString(application, spFileName, key, value);
-	}
+    public static void pushString(Application application, String key, String value) {
+        pushString(application, spFileName, key, value);
+    }
 
-	public static void pushString(String name, String key, String value) {
-		pushString(application, name, key, value);
-	}
+    public static void pushString(Activity activity, String key, String value) {
+        pushString(activity.getApplication(), spFileName, key, value);
+    }
 
-	public static void pushString(String key, String value) {
-		pushString(application, spFileName, key, value);
-	}
+    public static void pushString(String name, String key, String value) {
+        pushString(application, name, key, value);
+    }
+
+    public static void pushString(String key, String value) {
+        pushString(application, spFileName, key, value);
+    }
 ```
 
 ## 操作方法

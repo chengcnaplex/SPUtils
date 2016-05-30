@@ -1,7 +1,6 @@
 package com.aplex.utils;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -46,8 +45,8 @@ public class SPUtils{
 	}
 
 	public static void setApplication(Activity activity) {
-		if (application == null) {
-			Log.d(TAG, "Setting Application was null, please check this.");
+		if (activity == null) {
+			Log.d(TAG, "Setting activity was null, please check this.");
 			return ;
 		}
 		SPUtils.application = activity.getApplication();
@@ -55,7 +54,7 @@ public class SPUtils{
 
 	public static SharedPreferences getSP(Application application, String name) {
 		if (application == null) {
-			throw new RuntimeException("Setting Application was null, please check this.");
+			throw new RuntimeException("Application was null, please check this.");
 		}
 		return application.getSharedPreferences(name, SP_MODE);
 	}
@@ -95,6 +94,11 @@ public class SPUtils{
 		return getString(application, spFileName, key);
 	}
 
+	public static String getString(Activity activity, String key) {
+		return getString(activity.getApplication(), spFileName, key);
+	}
+
+
 	public static String getString(String name, String key) {
 		return getString(application, name, key);
 	}
@@ -111,6 +115,10 @@ public class SPUtils{
 
 	public static void pushString(Application application, String key, String value) {
 		pushString(application, spFileName, key, value);
+	}
+
+	public static void pushString(Activity activity, String key, String value) {
+		pushString(activity.getApplication(), spFileName, key, value);
 	}
 
 	public static void pushString(String name, String key, String value) {
@@ -132,6 +140,10 @@ public class SPUtils{
 		return getInt(application, spFileName, key);
 	}
 
+	public static int getInt(Activity activity, String key) {
+		return getInt(activity.getApplication(), spFileName, key);
+	}
+
 	public static int getInt(String name, String key) {
 		return getInt(application, name, key);
 	}
@@ -148,6 +160,10 @@ public class SPUtils{
 
 	public static void pushInt(Application application, String key, int value) {
 		pushInt(application, spFileName, key, value);
+	}
+
+	public static void pushInt(Activity activity, String key, int value) {
+		pushInt(activity.getApplication(), spFileName, key, value);
 	}
 
 	public static void pushInt(String name, String key, int value) {
@@ -169,6 +185,10 @@ public class SPUtils{
 		return getFloat(application, spFileName, key);
 	}
 	
+	public static float getFloat(Activity activity, String key) {
+		return getFloat(activity.getApplication(), spFileName, key);
+	}
+	
 	public static float getFloat(String name, String key) {
 		return getFloat(application, name, key);
 	}
@@ -185,6 +205,10 @@ public class SPUtils{
 
 	public static void pushFloat(Application application, String key, float value) {
 		pushFloat(application, spFileName, key, value);
+	}
+
+	public static void pushFloat(Activity activity, String key, float value) {
+		pushFloat(activity.getApplication(), spFileName, key, value);
 	}
 
 	public static void pushFloat(String name, String key, float value) {
@@ -206,6 +230,10 @@ public class SPUtils{
 		return getLong(application, spFileName, key);
 	}
 
+	public static long getLong(Activity activity, String key) {
+		return getLong(activity.getApplication(), spFileName, key);
+	}
+
 	public static long getLong(String name, String key) {
 		return getLong(application, name, key);
 	}
@@ -222,6 +250,10 @@ public class SPUtils{
 
 	public static void pushLong(Application application, String key, long value) {
 		pushLong(application, spFileName, key, value);
+	}
+
+	public static void pushLong(Activity activity, String key, long value) {
+		pushLong(activity.getApplication(), spFileName, key, value);
 	}
 
 	public static void pushLong(String name, String key, long value) {
@@ -243,6 +275,10 @@ public class SPUtils{
 		return getBoolean(application, spFileName, key);
 	}
 
+	public static boolean getBoolean(Activity activity, String key) {
+		return getBoolean(activity.getApplication(), spFileName, key);
+	}
+
 	public static boolean getBoolean(String name, String key) {
 		return getBoolean(application, name, key);
 	}
@@ -259,6 +295,10 @@ public class SPUtils{
 
 	public static void pushBoolean(Application application, String key, boolean value) {
 		pushBoolean(application, spFileName, key, value);
+	}
+	
+	public static void pushBoolean(Activity activity, String key, boolean value) {
+		pushBoolean(activity.getApplication(), spFileName, key, value);
 	}
 	
 	public static void pushBoolean(String name, String key, boolean value) {
@@ -298,6 +338,10 @@ public class SPUtils{
 		pushValue(application, spFileName, key, value);
 	}
 	
+	public static void pushValue(Activity activity, String key, Object value) {
+		pushValue(activity.getApplication(), spFileName, key, value);
+	}
+	
 	public static void pushValue(String name, String key, Object value) {
 		pushValue(application, name, key, value);
 	}
@@ -326,6 +370,10 @@ public class SPUtils{
 	
 	public static void pushValues(Application application, HashMap<String, Object> keyValues) {
 		pushValues(application, spFileName, keyValues);
+	}
+	
+	public static void pushValues(Activity activity, HashMap<String, Object> keyValues) {
+		pushValues(activity.getApplication(), spFileName, keyValues);
 	}
 	
 	public static void pushValues(String name, HashMap<String, Object> keyValues) {
@@ -367,6 +415,10 @@ public class SPUtils{
 		return getValue(application, spFileName, key, type);
 	}
 
+	public static Object getValue(Activity activity, String key, Object type) {
+		return getValue(activity.getApplication(), spFileName, key, type);
+	}
+
 	public static Object getValue(String name, String key, Object type) {
 		return getValue(application, name, key, type);
 	}
@@ -396,6 +448,10 @@ public class SPUtils{
 
 	public static HashMap<String, Object> getValues(Application application, HashMap<String, Object> keyTypes) {
 		return getValues(application, spFileName, keyTypes);
+	}
+
+	public static HashMap<String, Object> getValues(Activity activity, HashMap<String, Object> keyTypes) {
+		return getValues(activity.getApplication(), spFileName, keyTypes);
 	}
 
 	public static HashMap<String, Object> getValues(String name, HashMap<String, Object> keyTypes) {
