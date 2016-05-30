@@ -10,7 +10,7 @@ It is cool。
 ## SPUtils优点
 * 对SharedPreferences获取数据提供了如下类似方法：
 
-```
+```java
 	public static String getString(Application application, String name, String key) {
 		if (checkApplicationAndStrings(application, name, key)) {
 			return getSP(application, name).getString(key, "").trim();
@@ -33,7 +33,7 @@ It is cool。
 
 * 对SharedPreferences设置数据提供了如下类似方法：
 
-```
+```java
 	public static void pushString(Application application, String name, String key, String value) {
 		if (checkApplicationAndStrings(application, name, key, value)) {
 			getSP(application, name).edit().putString(key, value.trim()).commit();
@@ -56,14 +56,14 @@ It is cool。
 ## 操作方法
 * 使用如下方法先设置Application对象：
 
-```
+```java
     SPUtils.setApplication(application);
 ```
 
 * 后续的方法就可以随意使用，本人建议在使用之前，粗略的看一下源代码。
 * 从下面的Demo中你就知道该怎么使用这个工具了:
 
-```
+```java
     public static void testSPUtils(Application application) {
 
         setApplication(application);
